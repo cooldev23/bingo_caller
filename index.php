@@ -48,20 +48,20 @@
     <div id="app">
         <div class="container">
             <header class="bg-light shadow-sm">
-                <button class="btn btn-primary" @click="makePick" @keyup.enter="makePick">Get BINGO Ball</button>
+                <button class="btn btn-primary" @click="makePick" @keyup.enter="makePick">{{ getBallButtonText }}</button>
                 <h1 class="mb-0 p-3 text-center">Welcome to the Bingo Parlor!</h1>
                 <button class="btn btn-danger" @click="populateGame">Reset</button>
             </header>
-            <div class="mt-3 mb-2 alert alert-danger text-center shadow-sm" role="alert" v-if="error">
+            <div class="mt-2 mb-1 alert alert-danger text-center shadow-sm" role="alert" v-if="error">
                 {{ error }}
             </div>
-            <h5 class="mt-3 text-center" v-if="calledNumber">Current Number</h5>
+            <h5 class="mt-1 mb-0 text-center" v-if="calledNumber">Current Number</h5>
             <h2 class="text-success text-center large-font">{{ calledNumber }}</h2>
-            <div class="border px-2 py-3 shadow-sm" v-if="numbersCalled.length">
-                <h4>Called Numbers</h4>
-                <div class="d-flex flex-wrap align-items-center">
-                    <div class="box d-flex justify-content-center align-items-center shadow-sm" v-for="(item, index) in numbersCalled" :key="index">
-                        {{ item }}
+            <div class="border px-2 py-3 shadow-sm">
+                <h4 class="ml-5">Called Numbers</h4>
+                <div class="d-flex flex-wrap justify-content-center align-items-center">
+                    <div class="box border d-flex justify-content-center align-items-center shadow-sm" v-for="(item, index) in allNumbers" :key="index" :class="{'picked': item.isPicked}">
+                        {{ item.i }}
                     </div>
                 </div>
             </div>

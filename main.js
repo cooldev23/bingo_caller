@@ -2,6 +2,7 @@ const vm = new Vue({
   'el': '#app',
   'data': {
     error: '',
+    getBallButtonText: 'Start Game',
     calledNumber: '',
     letters: [
       "B","I","N","G","O"
@@ -11,6 +12,7 @@ const vm = new Vue({
     N: [],
     G: [],
     O: [],
+    allNumbers: [],
     numbersCalled: [],
   },
   methods: {
@@ -34,6 +36,10 @@ const vm = new Vue({
       this.calledNumber = letter + number;
       this.numbersCalled.push(this.calledNumber);
       this.error = '';
+      this.allNumbers[number-1].isPicked = true;
+      if (this.numbersCalled.length) {
+        this.getBallButtonText = 'Get BINGO Ball'
+      }
     },
     populateGame() {
       this.letters = ["B", "I", "N", "G", "O"];
@@ -48,9 +54,18 @@ const vm = new Vue({
       this.error = '';
       this.numbersCalled = [];
       this.calledNumber = '';
+      this.allNumbers.forEach(function(item,index) {
+        item.isPicked = false;
+      })
+    },
+    populateAllNumbers() {
+      for (let i = 1; i <= 75; i++) {
+        this.allNumbers.push({i: i, isPicked: false});
+      }
     }
   },
   created() {
+    this.populateAllNumbers();
     this.populateGame();
   }
 });

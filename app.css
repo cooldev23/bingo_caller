@@ -1,5 +1,5 @@
 body {
-    padding: 20px;
+    padding: 3px 20px 20px;
 }
 
 header {
@@ -13,16 +13,20 @@ header h1 {
 }
 
 .large-font {
-    font-size: 150px;
+    font-size: 130px;
     font-family: 'Abril Fatface', serif;
+    font-weight: bold;
 }
 
 .box {
-    height: 90px;
-    width: 90px;
+    height: 55px;
+    width: 55px;
     padding: 8px;
     margin: 8px 13px;
-    font-size: 30px;
-    background-color: lightgreen;
+    font-size: 22px;
     border-radius: 50%;
+}
+
+.picked {
+    background-color: lightgreen;
 }
