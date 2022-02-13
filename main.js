@@ -41,7 +41,7 @@ const vm = new Vue({
         this.getBallButtonText = 'Get BINGO Ball'
       }
     },
-    populateGame() {
+    populateData() {
       this.letters = ["B", "I", "N", "G", "O"];
       for (let i = 0; i < this.letters.length; i++) {
         var total = (i + 1) * 15;
@@ -60,12 +60,12 @@ const vm = new Vue({
     },
     populateAllNumbers() {
       for (let i = 1; i <= 75; i++) {
-        this.allNumbers.push({i: i, isPicked: false});
+        this.allNumbers.push({num: i, isPicked: false});
       }
     }
   },
   created() {
     this.populateAllNumbers();
-    this.populateGame();
+    this.populateData();
   }
 });
