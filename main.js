@@ -17,32 +17,46 @@ const vm = new Vue({
   },
   methods: {
     makePick() {
+      // set variables
+      let randNum = Math.floor(Math.random() * this.letters.length),
+        letter = this.letters[randNum],
+        count = this[letter].length,
+        numIndex = Math.floor(Math.random() * count),
+        number = this[letter][numIndex];
+
+      // no letters, no game
       if (!this.letters.length) {
         this.error = 'Game Over';
         return;
       }
-      let randNum = Math.floor(Math.random() * this.letters.length);
-      let letter = this.letters[randNum];
-      let count = this[letter].length;
-      let numIndex = Math.floor(Math.random() * count);
-      let number = this[letter][numIndex];
+
+      /* if all numbers have been removed for a certain letter
+      remove it and show warning/error */
       if (!count) {
         this.letters.splice(randNum,1);
         this.error = `All ${letter} numbers have been picked`;
         this.calledNumber = '';
         return;
       }
+
+      /* perform operations to remove number from parent letter (i.e. B12, G63),
+      and add to array */
       this[letter].splice(numIndex,1);
       this.calledNumber = letter + number;
       this.numbersCalled.push(this.calledNumber);
       this.error = '';
       this.allNumbers[number-1].isPicked = true;
+
+      // change button text if the game has started
       if (this.numbersCalled.length) {
         this.getBallButtonText = 'Get BINGO Ball'
       }
     },
     populateData() {
+      // set letters property
       this.letters = ["B", "I", "N", "G", "O"];
+
+      // loop to set 15 numbers for each letter
       for (let i = 0; i < this.letters.length; i++) {
         var total = (i + 1) * 15;
         let j = i === 0 ? 1 : i * 15 + 1;
@@ -51,6 +65,8 @@ const vm = new Vue({
           this[this.letters[i]].push(j);
         }
       }
+
+      // reset other properties to initial state
       this.error = '';
       this.numbersCalled = [];
       this.calledNumber = '';
