@@ -1,19 +1,41 @@
-const vm = new Vue({
-  'el': '#app',
-  'data': {
-    error: '',
-    getBallButtonText: 'Start Game',
-    calledNumber: '',
-    letters: [
-      "B","I","N","G","O"
-    ],
-    B: [],
-    I: [],
-    N: [],
-    G: [],
-    O: [],
-    allNumbers: [],
-    numbersCalled: [],
+const { createApp } = Vue;
+const app = createApp({
+  data() {
+    return {
+      error: '',
+      getBallButtonText: 'Start Game',
+      calledNumber: '',
+      gameData: 
+      [
+        {
+          letter: 'B',
+          stillHasNumbers: true,
+          numbers: []
+        },
+        {
+          letter: 'I',
+          stillHasNumbers: true,
+          numbers: []
+        },
+        {
+          letter: 'N',
+          stillHasNumbers: true,
+          numbers: []
+        },
+        {
+          letter: 'G',
+          stillHasNumbers: true,
+          numbers: []
+        },
+        {
+          letter: 'O',
+          stillHasNumbers: true,
+          numbers: []
+        }
+      ],
+      allNumbers: [],
+      numbersCalled: [],
+    }
   },
   methods: {
     makePick() {
@@ -54,15 +76,14 @@ const vm = new Vue({
     },
     populateData() {
       // set letters property
-      this.letters = ["B", "I", "N", "G", "O"];
+      // this.letters = ["B", "I", "N", "G", "O"];
 
       // loop to set 15 numbers for each letter
-      for (let i = 0; i < this.letters.length; i++) {
+      for (let i = 0; i < this.gameData.length; i++) {
         var total = (i + 1) * 15;
         let j = i === 0 ? 1 : i * 15 + 1;
-        this[this.letters[i]] = [];
         for (j; j <= total; j++) {
-          this[this.letters[i]].push(j);
+          this.gameData[i].numbers.push(j);
         }
       }
 
@@ -85,3 +106,4 @@ const vm = new Vue({
     this.populateData();
   }
 });
+app.mount('#app');
