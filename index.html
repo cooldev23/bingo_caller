@@ -27,9 +27,12 @@
             <h2 class="text-success text-center large-font">{{ calledNumber }}</h2>
             <div class="border px-2 py-3 shadow-sm">
                 <h4 class="ml-5">Called Numbers</h4>
-                <div class="d-flex flex-wrap justify-content-center align-items-center">
-                    <div class="box border d-flex justify-content-center align-items-center shadow-sm" v-for="(item, index) in allNumbers" :key="index" :class="{'picked': item.isPicked}">
-                        {{ item.num }}
+                <div class="d-flex flex-wrap justify-content-center align-items-center" v-for="(item, index) in gameData" :key="index">
+                    <div class="box d-flex justify-content-center align-items-center shadow-sm" :class="item.letter.toLowerCase() + '-class',{'picked': num.isPicked}" v-for="(num, numIndex) in item.numbers" :key="numIndex">
+                        <p class="mb-0 d-flex flex-column justify-content-center align-items-center">
+                            <span class="fs-6">{{ item.letter }}</span>
+                            <span class="fs-5">{{ num.num }}</span>
+                        </p>
                     </div>
                 </div>
             </div>
