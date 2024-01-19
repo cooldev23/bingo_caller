@@ -30,3 +30,23 @@ header h1 {
 .picked {
     background-color: lightgreen;
 }
+
+.b-class {
+    border: 1px solid lightpink;
+}
+
+.i-class {
+    border: 1px solid lavender;
+}
+
+.n-class {
+    border: 1px solid lightyellow;
+}
+
+.g-class {
+    border: 1px solid lightblue;
+}
+
+.o-class {
+    border: 1px solid lightgreen;
+}
