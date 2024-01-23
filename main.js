@@ -11,31 +11,46 @@ const app = createApp({
           letter: 'B',
           hasNumbersLeftUnpicked: true,
           numbers: [],
-          colorClass: 'lightpink'
+          letterClasses: {
+            border: '1px solid lightpink',
+            backgroundColor: 'lightpink'
+          }
         },
         {
           letter: 'I',
           hasNumbersLeftUnpicked: true,
           numbers: [],
-          colorClass: 'lavender'
+          letterClasses: {
+            border: '1px solid lavender',
+            backgroundColor: 'lavender'
+          }
         },
         {
           letter: 'N',
           hasNumbersLeftUnpicked: true,
           numbers: [],
-          colorClass: 'lightyellow'
+          letterClasses: {
+            border: '1px solid #FFFBB8',
+            backgroundColor: '#FFFBB8'
+          }
         },
         {
           letter: 'G',
           hasNumbersLeftUnpicked: true,
           numbers: [],
-          colorClass: 'lightblue'
+          letterClasses: {
+            border: '1px solid lightblue',
+            backgroundColor: 'lightblue'
+          }
         },
         {
           letter: 'O',
           hasNumbersLeftUnpicked: true,
           numbers: [],
-          colorClass: 'lightgreen'
+          letterClasses: {
+            border: '1px solid lightgreen',
+            backgroundColor: 'lightgreen'
+          }
         }
       ]
     }
