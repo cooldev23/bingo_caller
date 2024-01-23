@@ -1,5 +1,6 @@
 body {
     padding: 3px 20px 20px;
+    font-family: 'Architects Daughter', cursive;
 }
 
 header {
@@ -8,7 +9,6 @@ header {
 }
 
 header h1 {
-    font-family: 'Architects Daughter', cursive;
     align-self: center;
 }
 
@@ -25,28 +25,5 @@ header h1 {
     margin: 8px 13px;
     font-size: 22px;
     border-radius: 50%;
-}
-
-.picked {
-    background-color: lightgreen;
-}
-
-.b-class {
-    border: 1px solid lightpink;
-}
-
-.i-class {
-    border: 1px solid lavender;
-}
-
-.n-class {
-    border: 1px solid lightyellow;
-}
-
-.g-class {
-    border: 1px solid lightblue;
-}
-
-.o-class {
-    border: 1px solid lightgreen;
+    font-family: 'Abril Fatface', serif;
 }
