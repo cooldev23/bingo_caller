@@ -4,6 +4,8 @@ const app = createApp({
     return {
       error: '',
       getBallButtonText: 'Start Game',
+      headerTitle: 'Welcome to the Bingo Parlor!',
+      specialMessage: 'Happy Birthday, Amabel!',
       calledNumber: '',
       gameData: 
       [
