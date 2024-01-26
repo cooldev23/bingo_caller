@@ -1,11 +1,12 @@
 const { createApp, ref, onBeforeMount } = Vue;
 const app = createApp({
   setup() {
+    // data
     const error = ref(''),
       getBallButtonText = ref('Start Game'),
       headerTitle = ref('Welcome to the Bingo Parlor!'),
       specialMessage = ref('Happy Birthday, Amabel!'),
-      calledNumber = '',
+      calledNumber = ref(''),
       gameData = ref([
         {
           letter: 'B',
@@ -54,6 +55,7 @@ const app = createApp({
         }
       ]);
 
+    // named functions
     function makePick() {
       // no letters, no game
       if (haveAllNumbersBeenCalled()) {
@@ -77,7 +79,7 @@ const app = createApp({
       // set called number, error to empty and number as picked
       calledNumber.value = letterObj.letter + numberObj.num;
       error.value = '';
-      numberObj.isPicked.value = true;
+      numberObj.isPicked = true;
 
       // change button text if the game has started
       getBallButtonText.value = 'Get BINGO Ball'
@@ -87,7 +89,7 @@ const app = createApp({
       resetNumbers();
 
       // loop to set 15 numbers for each letter
-      for (let i = 0; i < gameData.length; i++) {
+      for (let i = 0; i < gameData.value.length; i++) {
         var total = (i + 1) * 15;
         let j = i === 0 ? 1 : i * 15 + 1;
         for (j; j <= total; j++) {
@@ -100,33 +102,41 @@ const app = createApp({
       calledNumber.value = '';
       getBallButtonText.value = 'Start Game';
     }
+
     function haveAllNumbersBeenCalled() {
-      for (const item of this.gameData) {
+      for (const item of gameData.value) {
         if (item.numbers.filter((obj) => !obj.isPicked).length) {
           return false;
         }
       }
+
       return  true;
     }
+
     function getLetterObject() {
-      return gameData[Math.floor(Math.random() * this.gameData.length)];
+      return gameData.value[Math.floor(Math.random() * gameData.value.length)];
     }
+
     function getNumberObject(obj) {
       let availableNumbers = obj.numbers.filter((item) => !item.isPicked), 
           count = availableNumbers.length,
           numIndex = Math.floor(Math.random() * count);
-
-      return availableNumbers[numIndex];
+    
+      return obj.numbers[numIndex];
     }
+
     function resetNumbers() {
       gameData.value.forEach(function(item) {
         item.numbers = []
       });
     }
+
+    // lifecycle hooks
     onBeforeMount(() => {
       populateData();
     })
 
+    // expose data and methods
     return {
       error, getBallButtonText, headerTitle, specialMessage, calledNumber, gameData, makePick, populateData
     }
