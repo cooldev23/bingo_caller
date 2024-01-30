@@ -114,7 +114,11 @@ const app = createApp({
     }
 
     function getLetterObject() {
-      return gameData.value[Math.floor(Math.random() * gameData.value.length)];
+      let letter = gameData.value[Math.floor(Math.random() * gameData.value.length)];
+      if (letter.numbers.every((obj) => obj.isPicked)) {
+        getLetterObject();
+      }
+      return  letter;
     }
 
     function getNumberObject(obj) {
@@ -122,7 +126,7 @@ const app = createApp({
           count = availableNumbers.length,
           numIndex = Math.floor(Math.random() * count);
     
-      return obj.numbers[numIndex];
+      return availableNumbers[numIndex];
     }
 
     function resetNumbers() {
