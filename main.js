@@ -84,6 +84,7 @@ const app = createApp({
       // change button text if the game has started
       getBallButtonText.value = 'Get BINGO Ball'
     }
+
     function populateData() {
       // reset each letter's numbers
       resetNumbers();
@@ -115,10 +116,12 @@ const app = createApp({
 
     function getLetterObject() {
       let letter = gameData.value[Math.floor(Math.random() * gameData.value.length)];
-      if (letter.numbers.every((obj) => obj.isPicked)) {
-        getLetterObject();
+      if (letter.hasNumbersLeftUnpicked) {
+        return letter;
       }
-      return  letter;
+
+      letter.hasNumbersLeftUnpicked.value = false;
+      return getLetterObject();
     }
 
     function getNumberObject(obj) {
