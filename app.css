@@ -26,3 +26,7 @@ header h1 {
     border-radius: 50%;
     font-family: 'Abril Fatface', serif;
 }
+
+#orderDiv {
+    font-family: 'Times New Roman', serif;
+}

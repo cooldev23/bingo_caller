@@ -15,12 +15,12 @@
 </head>
 <body class="bg-light">
     <div id="app">
-        <div class="container">
+        <div class="container mt-3">
             <header class="shadow-sm">
                 <button class="btn btn-primary fs-5" @click="makePick" @keyup.enter="makePick" :style="{'backgroundColor': gameData[3].letterClasses.backgroundColor}">{{ getBallButtonText }}</button>
                 <div>
-                    <h1 class="mb-0 pb-2 px-3 py-3 text-center bg-white">{{ headerTitle }}</h1>
-                    <h2 class="mb-0 p-1 text-center bg-white" :style="{'color': gameData[0].letterClasses.backgroundColor}">{{ specialMessage }}</h2>
+                    <h1 class="mb-0 pb-2 px-3 py-3 text-center bg-white border-top">{{ headerTitle }}</h1>
+                    <h2 class="mb-0 p-1 text-center bg-white border-bottom" :style="{'color': gameData[0].letterClasses.backgroundColor}">{{ specialMessage }}</h2>
                 </div>
                 <button class="btn btn-danger fs-5" @click="populateData" :style="{'backgroundColor': gameData[0].letterClasses.backgroundColor}">Reset</button>
             </header>
@@ -29,7 +29,7 @@
             </div>
             <h5 class="mt-3 mb-0 text-center" v-if="calledNumber">Current Bingo Ball</h5>
             <h2 class="text-success text-center large-font"><strong>{{ calledNumber }}</strong></h2>
-            <div class="card px-2 py-3 shadow-sm">
+            <div class="mb-3 px-2 py-3 card shadow-sm">
                 <h4>Called Numbers</h4>
                 <div class="d-flex flex-wrap justify-content-center align-items-center" v-for="(item, index) in gameData" :key="index">
                     <div v-for="(num, numIndex) in item.numbers" :key="numIndex" class="box d-flex justify-content-center align-items-center shadow-sm" :style="[num.isPicked ? { backgroundColor: item.letterClasses.backgroundColor, border: item.letterClasses.border } : { border: item.letterClasses.border }]">
@@ -38,6 +38,12 @@
                             <span class="fs-5">{{ num.num }}</span>
                         </p>
                     </div>
+                </div>
+            </div>
+            <div class="mb-3 px-2 py-3 card shadow-sm" v-if="calledNumberOrder.length">
+                <h4>Called Number Order</h4>
+                <div id="orderDiv">
+                    <span v-for="number in calledNumberOrder" :key="number" class="me-2 fs-5">{{ number }}</span>
                 </div>
             </div>
         </div>
