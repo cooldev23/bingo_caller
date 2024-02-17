@@ -32,7 +32,7 @@
             <div class="mb-3 px-2 py-3 card shadow-sm">
                 <h4>Called Numbers</h4>
                 <div class="d-flex flex-wrap justify-content-center align-items-center" v-for="(item, index) in gameData" :key="index">
-                    <div v-for="(num, numIndex) in item.numbers" :key="numIndex" class="box d-flex justify-content-center align-items-center shadow-sm" :style="[num.isPicked ? { backgroundColor: item.letterClasses.backgroundColor, border: item.letterClasses.border } : { border: item.letterClasses.border }]">
+                    <div v-for="(num, numIndex) in item.numbers" :key="numIndex" class="ball d-flex justify-content-center align-items-center shadow-sm" :style="[num.isPicked ? { backgroundColor: item.letterClasses.backgroundColor, border: item.letterClasses.border } : { border: item.letterClasses.border }]">
                         <p class="mb-0 d-flex flex-column justify-content-center align-items-center">
                             <span class="fs-6 text-muted">{{ item.letter }}</span>
                             <span class="fs-5">{{ num.num }}</span>
@@ -42,7 +42,7 @@
             </div>
             <div class="mb-3 px-2 py-3 card shadow-sm" v-if="calledNumberOrder.length">
                 <h4>Called Number Order</h4>
-                <div id="orderDiv">
+                <div id="orderDiv" class="m-3">
                     <span v-for="number in calledNumberOrder" :key="number" class="me-2 fs-5">{{ number }}</span>
                 </div>
             </div>
