@@ -7,6 +7,7 @@ const app = createApp({
       headerTitle = ref('Welcome to the Bingo Parlor!'),
       specialMessage = ref('Happy Birthday, Amabel!'),
       calledNumber = ref(''),
+      calledNumberOrder = ref([]),
       gameData = ref([
         {
           letter: 'B',
@@ -77,7 +78,8 @@ const app = createApp({
       }
 
       // set called number, error to empty and number as picked
-      calledNumber.value = letterObj.letter + numberObj.num;
+      calledNumber.value = letterObj.letter + ' ' + numberObj.num;
+      calledNumberOrder.value.push(letterObj.letter + numberObj.num);
       error.value = '';
       numberObj.isPicked = true;
 
@@ -102,6 +104,7 @@ const app = createApp({
       error.value = '';
       calledNumber.value = '';
       getBallButtonText.value = 'Start Game';
+      calledNumberOrder.value = [];
     }
 
     function haveAllNumbersBeenCalled() {
@@ -145,7 +148,7 @@ const app = createApp({
 
     // expose data and methods
     return {
-      error, getBallButtonText, headerTitle, specialMessage, calledNumber, gameData, makePick, populateData
+      error, getBallButtonText, headerTitle, specialMessage, calledNumber, gameData, makePick, populateData, calledNumberOrder
     }
   }
 });
